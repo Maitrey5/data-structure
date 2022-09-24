@@ -1,0 +1,270 @@
+/*
+ * pro.c
+ *
+ *  Created on: 21-Sep-2022
+ *      Author: root
+ */
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+	int data;
+	char alp;
+	struct node* next;
+};
+
+
+struct node1{
+	int data;
+	struct node1* next;
+};
+
+struct node2{
+	char alp;
+	struct node1* next;
+};
+
+
+struct node* first;
+struct node* last;
+struct node* nn;
+struct node* f;
+struct node* k;
+struct node1* kk;
+struct node1* ff;
+struct node2* fff;
+struct node2* kkk;
+
+
+
+struct node1* m;
+
+struct node2* nn2;
+
+
+
+
+
+void insert()
+{
+	int a;
+	char b;
+	printf("enter the number and character to insert");
+	scanf("%d %c",&a,&b);
+
+	nn=(struct node*)malloc(sizeof(struct node));
+	nn->data=a;
+	nn->alp=b;
+	nn->next=NULL;
+
+	if(first==NULL)
+	{
+		first=nn;
+		last=nn;
+	}
+	else
+	{
+		last->next=nn;
+		last=nn;
+	}
+}
+
+
+void delete()
+		{
+	if(first==NULL)
+		{
+			printf("ll is empty");
+			return;
+		}
+	struct node* prev=NULL;
+	struct node* curr=first;
+
+	while(curr->next!=NULL)
+	{
+		prev=curr;
+		curr=curr->next;
+//		first=first->next;
+	}
+	printf("%d , and ,%d",curr->data,prev->data);
+
+	last=prev;
+	printf("%d //",last->data);
+	prev->next=NULL;
+//	last=prev;
+	free(curr);
+	printf("%d , and ,%d",curr->data,prev->data);
+
+		}
+void display()
+{
+	struct node* p=first;
+
+	if(first==NULL)
+	{
+		printf("ll is empty");
+		return;
+	}
+	else{
+
+		while(first->next!=NULL)
+		{
+			printf("%d",first->data);
+			printf("%c",first->alp);
+
+		    first=first->next;
+		}
+		printf("%d",first->data);
+		printf("%c",first->alp);
+
+		printf("\n");
+		first=p;
+
+	}
+}
+void merge()
+{
+	f->next=first;
+	struct node* m=k;
+	while(k->next!=NULL)
+	{
+		printf("%d",k->data);
+		printf("%c",k->alp);
+		k=k->next;
+	}
+	printf("%d",k->data);
+	printf("%c",k->alp);
+	k=m;
+}
+
+void absint()
+{
+	struct node* m1=k;
+//	struct node* m
+	printf("\n");
+	while(k !=NULL)
+	{
+
+//		printf("%d",k->data);
+//		printf("%c",k->alp);
+		m=(struct node*)malloc(sizeof(struct node1));
+		m->data=k->data;
+//		nn1->alp=k->alp;
+		m->next=NULL;
+
+		if(kk==NULL)
+			{
+				kk=m;
+				ff=m;
+			}
+			else
+			{
+				ff->next=m;
+				ff=m;
+			}
+
+
+//		printf("%d",k->data);
+//		printf("%c",k->alp);
+		k=k->next;
+	}
+	k=m1;
+	printf("\n");
+	while(kk !=NULL)
+	{
+		printf("%d",kk->data);
+        kk=kk->next;
+	}
+
+}
+void abschar()
+{
+//	struct node* nn1=k;
+	printf("\n");
+		while(k !=NULL)
+		{
+//			m=(struct node*)malloc(sizeof(struct node));
+			nn2=(struct node*)malloc(sizeof(struct node2));
+//			m->data=k->data;
+			nn2->alp=k->alp;
+//			m->next=NULL;
+
+			if(kkk==NULL)
+				{
+					kkk=nn2;
+					fff=nn2;
+				}
+				else
+				{
+					fff->next=nn2;
+					fff=nn2;
+				}
+
+
+	//		printf("%d",k->data);
+	//		printf("%c",k->alp);
+			k=k->next;
+		}
+
+		while(kkk !=NULL)
+		{
+			printf("%c",kkk->alp);
+	        kkk=kkk->next;
+		}
+}
+//	first=p;
+
+int main()
+{
+	int o,u=1,i=1;
+	for(i=1;i<=2;i++)
+	{
+	while(u)
+	{
+		printf("press 1 for insert in %d ll\n",i);
+		printf("press 2 for delete in %d ll\n",i);
+		printf("press 3 for display in %d ll\n",i);
+		printf("press 4 for exit\n");
+
+		scanf("%d",&o);
+		switch(o)
+		{
+		case 1:
+		insert();
+		break;
+
+		case 2:
+		delete();
+		break;
+
+		case 3:
+		display();
+		break;
+
+		case 4:
+		u=0;
+		break;
+
+		default:
+		break;
+		}
+
+	}
+	if(i==1)
+	{
+	u=1;
+    k=first;
+	f=last;
+	first=NULL;
+	last=NULL;
+	}
+	}
+	merge();
+	absint();
+	abschar();
+	return 0;
+}
+
+
+
